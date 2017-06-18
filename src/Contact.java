@@ -18,54 +18,77 @@ public class Contact implements Comparable<Contact>, Serializable {
      */
     public Contact(String newFirstName, String newLastName, String newPhoneNummber, String newEmail, String newStreetAddress, String newNotes) {
 
+        this.firstName      = newFirstName;
+        this.lastName       = newLastName;
+        this.email          = newEmail;
+        this.phoneNumber    = newPhoneNummber;
+        this.streetAddress  = newStreetAddress;
+        this.notes          = newNotes;
+
     }
     /**
      * returns the firstName of the contact
      */
     public String getFirstName() {
-        return "first name";
+
+        return firstName;
     }
 
     /**
      * returns the last name of the contact
      */
     public String getLastName() {
-        return "last name";
+
+        return lastName;
     }
 
     /**
      * returns the phone # of the contact
      */
     public String getPhoneNumber() {
-        return "phone number";
+
+        return phoneNumber;
     }
 
     /**
      * returns the email address of the contact
      */
     public String getEmail() {
-        return "email";
+
+        return email;
     }
 
     /**
      * returns the street address of the contact
      */
-    public String getStreetAddress() {
-        return "street address";
+    public String getStreetAddress()
+    {
+
+        return streetAddress;
     }
 
     /**
      * returns the notes of the contact
      */
     public String getNotes() {
-        return "notes";
+
+        return notes;
     }
 
     /**
      * returns a String containing all the information related to one contact
      */
     public String toString() {
-        return "contact";
+
+        String result = "";
+
+        result += "Name:    " + firstName + " " + lastName + "\n";
+        result += "Address: " + streetAddress + "\n";
+        result += "Email:   " + email + "\n";
+        result += "Phone:   " + phoneNumber + "\n";
+        result += "Notes:   " + notes + "\n";
+
+        return result;
     }
 
     /**
@@ -73,6 +96,8 @@ public class Contact implements Comparable<Contact>, Serializable {
      * compares two objects of class Contact and returns an integer based on whether one is greater, equal to, or less than the other
      */
     public int compareTo(Contact contact) {
-        return 0;
+
+       return 0;
+
     }
 }

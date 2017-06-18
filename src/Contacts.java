@@ -1,54 +1,98 @@
 import java.util.Collections;
+import java.util.Scanner;
 
 /**
- * Main that tests all the classes
- * Code written by Liwen Zhang
+ * Main that calls the methods in class Contact and ContactList to create a list for two contacts.
+ * Code written by Edward Miszkiewicz
+ * Rev 1.0
+ * Date: 06/19/2017
  */
-public class Contacts {
-    public static void main (String[] args) {
-        Contact person1 = new Contact("Emily","Zhang", "4082343439","something@gmail.com","1287 blahblah ave san jose 13498","random contact entry that I just made up just now");
-        System.out.println(person1); //toString
 
-        Contact person2 = new Contact("Joe","Bob","9901238790","hellohello@gmail.com","39487 something lane los altos hills 39480", "other contact");
-        System.out.println(person2); //toString
+public class Contacts {
+
+    public static Contact inputInfo () {
+
+        Scanner input = new Scanner(System.in);
+
+        String newFirstName;
+        String newLastName;
+        String newPhoneNumber;
+        String newEmail;
+        String newStreetAddress;
+        String newNotes;
+
+        System.out.print("Enter first name: ");
+        newFirstName = input.nextLine();
+
+        System.out.print("Enter last name: ");
+        newLastName = input.nextLine();
+
+
+        System.out.print("Enter street address: ");
+        newStreetAddress = input.nextLine();
+
+        System.out.print("Enter phone number: ");
+        newPhoneNumber = input.nextLine();
+
+        System.out.print("Enter email: ");
+        newEmail = input.nextLine();
+
+
+        System.out.print("Enter notes: ");
+        newNotes = input.nextLine();
+
+        System.out.println();
+
+        Contact person = new Contact(newFirstName, newLastName, newPhoneNumber, newEmail, newStreetAddress, newNotes);
+
+        return person;
+    }
+
+    public static void main (String[] args) {
+
+        Contact person1;
+        person1 = inputInfo();
+
+        Contact person2;
+        person2 = inputInfo();
 
         ContactList listofpeople = new ContactList();
         listofpeople.addContact(person1);
         listofpeople.addContact(person2);
 
-        System.out.println("person 1 " + person1);
-        System.out.println("person 2 " + person2);
+        System.out.println("Contact (1)");
+        System.out.println("-----------");
+        System.out.println(person1); //implicit call to toString
+        //System.out.println();
 
-        System.out.println(person1.compareTo(person2));
-        System.out.println(person2.compareTo(person1));
-
-        System.out.println(person1.getFirstName());
-        System.out.println(person1.getLastName());
-        System.out.println(person1.getPhoneNumber());
-        System.out.println(person1.getEmail());
-        System.out.println(person1.getStreetAddress());
-        System.out.println(person1.getNotes());
-
-        listofpeople.printAllContacts();
-        listofpeople.searchContactsByLastName("Zhang");
-        listofpeople.searchContactsByLastName("Bob");
-        listofpeople.saveListToDisk();
-        listofpeople.retrieveListFromDisk();
+        System.out.println("Contact (2)");
+        System.out.println("-----------");
+        System.out.println(person2); //implicit call to toString
 
     }
 }
 
 /*
-contact
-contact
-person 1 contact
-person 2 contact
-0
-0
-first name
-last name
-phone number
-email
-street address
-notes
+------ OUTPUT ------
+
+Contact (1)
+-----------
+Name:    Edward Miszkiewicz
+Address: 4141 Thain Way, Palo Alto, CA, 94306
+Email:   havdessert1st@gmail.com
+Phone:   650-269-4336
+Notes:   slacker
+
+Contact (2)
+-----------
+Name:    Lisa Penninger
+Address: 4141 Thain Way, Palo Alto, CA, 94306
+Email:   lpenninger@alum.calberkeley.org
+Phone:   650-799-3916
+Notes:   new contact
+
+
+Process finished with exit code 0
+
+--------------------
  */

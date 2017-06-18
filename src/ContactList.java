@@ -1,5 +1,6 @@
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Arrays;
 
 /**
  * One object of class ContactList represents one list of contacts
@@ -12,7 +13,7 @@ public class ContactList implements Serializable {
      * adds an object of class contact to the arraylist, parameter is newContact
      */
     public void addContact(Contact newContact) {
-
+        listOfContacts.add(newContact);
     }
     /**
      * prints a string of all objects of class contact in the arraylist
@@ -45,6 +46,11 @@ public class ContactList implements Serializable {
      * returns a String containing all the information related to an object of class ContactList
      */
     public String toString() {
-        return "contactlist";
+        String printed = "";
+        for(Contact contact: listOfContacts) {
+            printed += contact.toString();
+            printed += "\n";
+        }
+        return printed;
     }
 }
