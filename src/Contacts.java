@@ -10,6 +10,11 @@ import java.util.Scanner;
 
 public class Contacts {
 
+    /**
+     * Method that prompts the user and reads in the required fields for a single contact:
+     * first name, last name, address, phone number, email and note.
+     * Written by Edm.
+     */
     public static Contact inputInfo () {
 
         Scanner input = new Scanner(System.in);
@@ -27,6 +32,12 @@ public class Contacts {
         System.out.print("Enter last name: ");
         newLastName = input.nextLine();
 
+        while (newLastName.equals("")) {
+            System.out.print("Last name field is required!");
+            System.out.println();
+            System.out.print("Enter last name: ");
+            newLastName = input.nextLine();
+        }
 
         System.out.print("Enter street address: ");
         newStreetAddress = input.nextLine();
@@ -75,21 +86,41 @@ public class Contacts {
 /*
 ------ OUTPUT ------
 
+Enter first name: Edward
+Enter last name:
+Last name field is required!
+Enter last name:
+Last name field is required!
+Enter last name: Miszkiewicz
+Enter street address: 4141 Thain Way, Palo Alto, CA, 94306
+Enter phone number: 650-269-4336
+Enter email: havdessert1st@gmail.com
+Enter notes: software slacker
+
+Enter first name: Lisa
+Enter last name:
+Last name field is required!
+Enter last name: Penninger
+Enter street address: 12345 Disneyland Lane, Los Angeles, CA 92208
+Enter phone number: 650-799-3916
+Enter email: lpenninger@alum.calberkeley.org
+Enter notes: software deva
+
 Contact (1)
 -----------
 Name:    Edward Miszkiewicz
 Address: 4141 Thain Way, Palo Alto, CA, 94306
 Email:   havdessert1st@gmail.com
 Phone:   650-269-4336
-Notes:   slacker
+Notes:   software slacker
 
 Contact (2)
 -----------
 Name:    Lisa Penninger
-Address: 4141 Thain Way, Palo Alto, CA, 94306
+Address: 12345 Disneyland Lane, Los Angeles, CA 92208
 Email:   lpenninger@alum.calberkeley.org
 Phone:   650-799-3916
-Notes:   new contact
+Notes:   software deva
 
 
 Process finished with exit code 0
