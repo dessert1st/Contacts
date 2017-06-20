@@ -3,7 +3,7 @@ import java.util.Scanner;
 /**
  * Class "Contacts" controls the creation of a contact list.
  * Code written by Edward Miszkiewicz
- * Rev 1.2
+ * Rev 1.3
  * Date: 06/19/2017, PM
  */
 public class Contacts {
@@ -221,6 +221,56 @@ Address: 279 Kite Rd, Philadelphia, PA, 02450
 Email:   bigben@gmail.com
 Phone:   448-668-1777
 Notes:   Likes kites.
+
+
+Process finished with exit code 0
+-----------------------------
+
+------ Output (Run #4) ------
+
+Enter first name: Paul
+Enter last name: Bunyan
+Enter street address:
+Enter phone number:
+Enter email: p.bunyan@gmail.com
+Enter notes: don't know his street address or phone number
+
+Contact (1) added
+-----------------
+Name:    Paul Bunyan
+Address:
+Email:   p.bunyan@gmail.com
+Phone:
+Notes:   don't know his street address or phone number
+
+Enter first name:
+Enter last name: Dundee
+Enter street address: 199 George Street, Sydney, New South Wales 2000, Australia
+Enter phone number:
+Enter email:
+Enter notes: don't have much info on this contact
+
+Contact (2) added
+-----------------
+Name:     Dundee
+Address: 199 George Street, Sydney, New South Wales 2000, Australia
+Email:
+Phone:
+Notes:   don't have much info on this contact
+
+List of Contacts
+----------------
+Name:    Paul Bunyan
+Address:
+Email:   p.bunyan@gmail.com
+Phone:
+Notes:   don't know his street address or phone number
+
+Name:     Dundee
+Address: 199 George Street, Sydney, New South Wales 2000, Australia
+Email:
+Phone:
+Notes:   don't have much info on this contact
 
 
 Process finished with exit code 0
