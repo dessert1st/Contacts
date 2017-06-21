@@ -49,7 +49,7 @@ public class ContactList{
         }
     }
     /**
-     * retrieves the arraylist from disk to listOfContacts
+     * retrieves(returns) the arraylist from disk to listOfContacts
      * Author N.T
      */
     public void retrieveListFromDisk() {
@@ -74,7 +74,7 @@ public class ContactList{
     /**
      * returns file path for saving and retrieving data
      * Author: N.T
-     */
+    */
     private String getFilePath(){
 
         String filename = "ContactList.ser";
