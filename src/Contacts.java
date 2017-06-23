@@ -3,10 +3,66 @@ import java.util.Scanner;
 /**
  * Class "Contacts" controls the creation of a contact list.
  * Code written by Edward Miszkiewicz
- * Rev 1.3
- * Date: 06/19/2017, PM
+ * Rev 2.0 (Task 4)
+ * Date: 06/23/2017
  */
 public class Contacts {
+
+    private static ContactList listOfPeople  = new ContactList();
+
+    /**
+     * Method that prompts the user and reads in the required fields to create a single contact.
+     * Written by edm.
+     */
+    private static Scanner input = new Scanner(System.in);
+    public static void printMenu () {
+        int inputOption = 0;
+        //String inputOption = "";
+
+        while (inputOption != 4){
+            System.out.println("------------- MENU -------------");
+            System.out.println("  *** Contact List Program ***");
+            System.out.println();
+            System.out.println("    1. Add new contact");
+            System.out.println("    2. Print contact list");
+            System.out.println("    3. Search by last name");
+            System.out.println("    4. Save and exit");
+            System.out.println("--------------------------------\n");
+            System.out.print("Select from one of the above options: ");
+            //System.out.println();
+            inputOption = Integer.parseInt(input.nextLine());
+            while (inputOption <=0 || inputOption >4){
+
+                System.out.print("\nPlease enter valid input option: ");
+                //inputOption = input.nextLine();
+                inputOption = Integer.parseInt(input.nextLine());
+            }
+
+            switch (inputOption) {
+
+                case 1:      //call add contact method
+                    addPerson();
+                    break;
+                case 2:      //call print contact list method
+                    System.out.println();
+                    System.out.println("List of Contacts");
+                    System.out.println("----------------");
+                    System.out.print(listOfPeople);
+                    break;
+                case 3:      //call search by last name method
+                    String searchName;
+                    System.out.print("\nEnter last name to search by: ");
+                    searchName = input.nextLine();
+                    listOfPeople.searchContactsByLastName(searchName);
+                    break;
+                case 4:  //call save method and exit program
+                    listOfPeople.saveListToDisk();
+                    System.out.print("\nContacts list saved!");
+                    System.out.println();
+                    System.out.print("\nGood-bye!");
+            }
+        }
+    }
 
     /**
      * Method that prompts the user and reads in the required fields to create a single contact.
@@ -16,13 +72,14 @@ public class Contacts {
 
         Scanner input = new Scanner(System.in);
 
-        String newFirstName = "";
+        String newFirstName;
         String newLastName = "";
-        String newPhoneNumber = "";
-        String newEmail = "";
-        String newStreetAddress = "";
-        String newNotes = "";
+        String newPhoneNumber;
+        String newEmail;
+        String newStreetAddress;
+        String newNotes;
 
+        System.out.println();
         System.out.print("Enter first name: ");
         newFirstName = input.nextLine();
 
@@ -56,223 +113,35 @@ public class Contacts {
 
         return person;
     }
+    /**
+     * Method that collects the input and calls the add contact method in class Contact.
+     * Written by edm.
+     */
+    private static void addPerson()
+    {
+        Contact person;
+        person = inputInfo();
+
+        if (person != null) {
+            listOfPeople.addContact(person);
+            System.out.println("Contact added");
+            System.out.println("-------------");
+            System.out.println(person); //implicit call to toString
+        }
+        else
+            System.out.print("\nContact not added!\n\n");
+    }
 
     /**
-     * Main that calls the methods in class Contact and ContactList to create a list for two contacts.
+     * Main that calls the printMenu method.
      * Written by edm.
      */
     public static void main (String[] args) {
-        ContactList listOfPeople = null;
-        listOfPeople  = new ContactList();
 
-        for (int count = 1; count <= 2; count++) {
-            Contact person;
-            person = inputInfo();
-
-            if (person != null) {
-                listOfPeople.addContact(person);
-                System.out.println("Contact (" + count + ") added");
-                System.out.println("-----------------");
-                System.out.println(person); //implicit call to toString
-            }
-            else
-                System.out.print("\nContact (" + count + ") not added!\n\n");
-        }
-
-        System.out.println("List of Contacts");
-        System.out.println("----------------");
-        System.out.print(listOfPeople);
+        listOfPeople.retrieveListFromDisk();
+        printMenu();
+        //System.out.println("List of Contacts");
+        //System.out.println("----------------");
+        //System.out.print(listOfPeople);
     }
 }
-
-/*
------- Output (Run #1) ------
-
-Enter first name: Edward
-Enter last name:
-Enter last name (required), or 99 to skip:
-Enter last name (required), or 99 to skip:
-Enter last name (required), or 99 to skip: 99
-
-Contact (1) not added!
-
-Enter first name: Andrew
-Enter last name: Jackson
-Enter street address: 23 Freedom Lane, Boston, MA 02110
-Enter phone number: 514-267-1777
-Enter email: AndJack@gmail.com
-Enter notes: 7th president of the US.
-
-Contact (2) added
------------------
-Name:    Andrew Jackson
-Address: 23 Freedom Lane, Boston, MA 02110
-Email:   AndJack@gmail.com
-Phone:   514-267-1777
-Notes:   7th president of the US.
-
-List of Contacts
-----------------
-Name:    Andrew Jackson
-Address: 23 Freedom Lane, Boston, MA 02110
-Email:   AndJack@gmail.com
-Phone:   514-267-1777
-Notes:   7th president of the US.
-
-
-Process finished with exit code 0
------------------------------
-
------- Output (Run #2) ------
-
-Enter first name: Edward
-Enter last name:
-Enter last name (required), or 99 to skip:
-Enter last name (required), or 99 to skip:
-Enter last name (required), or 99 to skip: Miszkiewicz
-Enter street address: 4141 Thain Way, Palo Alto, CA 94306
-Enter phone number: 650-269-4336
-Enter email: havdessert1st@gmail.com
-Enter notes: software slacker
-
-Contact (1) added
------------------
-Name:    Edward Miszkiewicz
-Address: 4141 Thain Way, Palo Alto, CA 94306
-Email:   havdessert1st@gmail.com
-Phone:   650-269-4336
-Notes:   software slacker
-
-Enter first name: Lisa
-Enter last name: Penninger
-Enter street address: 222 Haight St., San Francisco, CA 94111
-Enter phone number: 650-338-2389
-Enter email: summeroflove@gmail.com
-Enter notes: software deva
-
-Contact (2) added
------------------
-Name:    Lisa Penninger
-Address: 222 Haight St., San Francisco, CA 94111
-Email:   summeroflove@gmail.com
-Phone:   650-338-2389
-Notes:   software deva
-
-List of Contacts
-----------------
-Name:    Edward Miszkiewicz
-Address: 4141 Thain Way, Palo Alto, CA 94306
-Email:   havdessert1st@gmail.com
-Phone:   650-269-4336
-Notes:   software slacker
-
-Name:    Lisa Penninger
-Address: 222 Haight St., San Francisco, CA 94111
-Email:   summeroflove@gmail.com
-Phone:   650-338-2389
-Notes:   software deva
-
-
-Process finished with exit code 0
------------------------------
-
------- Output (Run #3) ------
-
-Enter first name: George
-Enter last name: Washington
-Enter street address: 55 Liberty Ct., Boston, MA 02110
-Enter phone number: 512-378-1777
-Enter email: therealgeorge.w@gmail.com
-Enter notes: Number 1.
-
-Contact (1) added
------------------
-Name:    George Washington
-Address: 55 Liberty Ct., Boston, MA 02110
-Email:   therealgeorge.w@gmail.com
-Phone:   512-378-1777
-Notes:   Number 1.
-
-Enter first name: Ben
-Enter last name: Franklin
-Enter street address: 279 Kite Rd, Philadelphia, PA, 02450
-Enter phone number: 448-668-1777
-Enter email: bigben@gmail.com
-Enter notes: Likes kites.
-
-Contact (2) added
------------------
-Name:    Ben Franklin
-Address: 279 Kite Rd, Philadelphia, PA, 02450
-Email:   bigben@gmail.com
-Phone:   448-668-1777
-Notes:   Likes kites.
-
-List of Contacts
-----------------
-Name:    George Washington
-Address: 55 Liberty Ct., Boston, MA 02110
-Email:   therealgeorge.w@gmail.com
-Phone:   512-378-1777
-Notes:   Number 1.
-
-Name:    Ben Franklin
-Address: 279 Kite Rd, Philadelphia, PA, 02450
-Email:   bigben@gmail.com
-Phone:   448-668-1777
-Notes:   Likes kites.
-
-
-Process finished with exit code 0
------------------------------
-
------- Output (Run #4) ------
-
-Enter first name: Paul
-Enter last name: Bunyan
-Enter street address:
-Enter phone number:
-Enter email: p.bunyan@gmail.com
-Enter notes: don't know his street address or phone number
-
-Contact (1) added
------------------
-Name:    Paul Bunyan
-Address:
-Email:   p.bunyan@gmail.com
-Phone:
-Notes:   don't know his street address or phone number
-
-Enter first name:
-Enter last name: Dundee
-Enter street address: 199 George Street, Sydney, New South Wales 2000, Australia
-Enter phone number:
-Enter email:
-Enter notes: don't have much info on this contact
-
-Contact (2) added
------------------
-Name:     Dundee
-Address: 199 George Street, Sydney, New South Wales 2000, Australia
-Email:
-Phone:
-Notes:   don't have much info on this contact
-
-List of Contacts
-----------------
-Name:    Paul Bunyan
-Address:
-Email:   p.bunyan@gmail.com
-Phone:
-Notes:   don't know his street address or phone number
-
-Name:     Dundee
-Address: 199 George Street, Sydney, New South Wales 2000, Australia
-Email:
-Phone:
-Notes:   don't have much info on this contact
-
-
-Process finished with exit code 0
------------------------------
- */

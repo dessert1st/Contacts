@@ -1,5 +1,6 @@
 import java.io.*;
 import java.util.ArrayList;
+import java.util.Collections;
 
 /**
  * One object of class ContactList represents one list of contacts
@@ -15,18 +16,32 @@ public class ContactList{
     public void addContact(Contact newContact) {
         listOfContacts.add(newContact);
     }
+
     /**
-     * prints a string of all objects of class contact in the arraylist
+     * prints a string of all objects of class contact in the arraylist alphabetically by last name
+     * written by L.Z.
      */
     public void printAllContacts() {
-
+        Collections.sort(listOfContacts);
+        System.out.print(this.toString());
     }
+
     /**
      * searches the arraylist for any objects of class contact by last name
-     * and prints out any matching object
+     * and prints out any matching objects as well as number of contacts found
+     * written by L.Z.
      */
     public void searchContactsByLastName(String lastName) {
-
+        int count = 0;
+        String found = "";
+        for (Contact contact: listOfContacts) {
+            if(lastName.equals(contact.getLastName())) {
+                count++;
+                found = found + contact.toString() + "\n";
+            }
+        }
+        System.out.println(count + " contact(s) found." + "\n");
+        System.out.println(found);
     }
 
     /**
@@ -49,7 +64,7 @@ public class ContactList{
         }
     }
     /**
-     * retrieves(returns) the arraylist from disk to listOfContacts
+     * retrieves the arraylist from disk to listOfContacts
      * Author N.T
      */
     public void retrieveListFromDisk() {
@@ -74,7 +89,7 @@ public class ContactList{
     /**
      * returns file path for saving and retrieving data
      * Author: N.T
-    */
+     */
     private String getFilePath(){
 
         String filename = "ContactList.ser";
@@ -90,8 +105,7 @@ public class ContactList{
     public String toString() {
         String printed = "";
         for(Contact contact: listOfContacts) {
-            printed += contact.toString();
-            printed += "\n";
+            printed = printed + contact.toString() + "\n";
         }
         return printed;
     }
