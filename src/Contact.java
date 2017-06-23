@@ -27,13 +27,6 @@ public class Contact implements Comparable<Contact>, Serializable {
         this.notes          = newNotes;
 
     }
-    /**
-     * returns the firstName of the contact
-     */
-    public String getFirstName() {
-
-        return firstName;
-    }
 
     /**
      * returns the last name of the contact
@@ -41,39 +34,6 @@ public class Contact implements Comparable<Contact>, Serializable {
     public String getLastName() {
 
         return lastName;
-    }
-
-    /**
-     * returns the phone # of the contact
-     */
-    public String getPhoneNumber() {
-
-        return phoneNumber;
-    }
-
-    /**
-     * returns the email address of the contact
-     */
-    public String getEmail() {
-
-        return email;
-    }
-
-    /**
-     * returns the street address of the contact
-     */
-    public String getStreetAddress()
-    {
-
-        return streetAddress;
-    }
-
-    /**
-     * returns the notes of the contact
-     */
-    public String getNotes() {
-
-        return notes;
     }
 
     /**
@@ -94,8 +54,10 @@ public class Contact implements Comparable<Contact>, Serializable {
     }
 
     /**
-     * defines what it means for one object of class Contact to be bigger than another object of class Contact
-     * compares two objects of class Contact and returns an integer based on whether one is greater, equal to, or less than the other
+     * Compares two objects of class Contact with last names, if they are equal,compares them with first names.
+     * compareToIgnoreCase() returns the value 0 if the argument is lexicographically equal to the object calling this method;
+     * a value less than 0 if the argument is lexicographically greater than the object calling this method;
+     * and a value greater than 0 if the argument lexicographically less than the object calling this method.
      * Author: N.T
      */
     public int compareTo(Contact contact) {
