@@ -3,7 +3,7 @@ import java.util.Scanner;
 /**
  * Class "Contacts" controls the creation of a contact list.
  * Code written by Edward Miszkiewicz
- * Rev 2.1 (Task 4)
+ * Rev 2.0 (Task 4)
  * Date: 06/26/2017
  */
 public class Contacts {
