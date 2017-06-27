@@ -40,8 +40,15 @@ public class ContactList{
                 found = found + contact.toString() + "\n";
             }
         }
-        System.out.println(count + " contact(s) found." + "\n");
-        System.out.println(found);
+        System.out.println("(" + count + ") Contact(s) Found!");
+        System.out.println("---------------------");
+
+        if (found.equals("")) {
+            System.out.println();
+        }
+        else{
+            System.out.print(found);
+        }
     }
 
     /**
@@ -63,6 +70,7 @@ public class ContactList{
             }
         }
     }
+
     /**
      * retrieves the arraylist from disk to listOfContacts
      * Author N.T
@@ -87,6 +95,14 @@ public class ContactList{
     }
 
     /**
+     * returns the number of contacts in ContactList
+     * Author: edm
+     */
+    public int count() {
+        return listOfContacts.size();
+    }
+
+    /**
      * returns file path for saving and retrieving data
      * Author: N.T
      */
@@ -95,7 +111,6 @@ public class ContactList{
         String filename = "ContactList.ser";
         String workingDirectory = System.getProperty("user.dir");
         return  workingDirectory + File.separator + filename;
-
     }
 
     /**

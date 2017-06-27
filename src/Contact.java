@@ -12,7 +12,6 @@ public class Contact implements Comparable<Contact>, Serializable {
     private String streetAddress;
     private String notes;
 
-
     /**
      * constructor that sets the firstName of the contact to newFirstName
      * Author: N.T
@@ -25,8 +24,8 @@ public class Contact implements Comparable<Contact>, Serializable {
         this.phoneNumber    = newPhoneNummber;
         this.streetAddress  = newStreetAddress;
         this.notes          = newNotes;
-
     }
+
     /**
      * returns the firstName of the contact
      */
@@ -64,7 +63,6 @@ public class Contact implements Comparable<Contact>, Serializable {
      */
     public String getStreetAddress()
     {
-
         return streetAddress;
     }
 
